@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MGS DBMS</title>
+    <style>
+      body{
+        background: #0072c3;
+      }
+      .versions a {
+          padding: 10px 6px;
+          margin-right: 10px;
+          font-size: 21px;
+          text-transform: uppercase;
+          font-family: sans-serif;
+          width: 155px;
+          min-width: 155px;
+          text-align: center;
+          display: inline-block;
+          text-decoration: none;
+          border: 2px solid rgba(255, 255, 255, 0.16);
+          color: rgb(255, 255, 255);
+          box-shadow: 6px 8px 18px 2px rgba(0, 0, 0, 0.38);
+          text-shadow: 2px 2px rgba(0, 0, 0, 0.102);
+      }
+
+      video#myVideo {
+          position: fixed;
+          top: 0;
+          left: 0;
+          display: block;
+          min-height: auto;
+          width: 1367px;
+          background: #000;
+      }
+      .container {
+          bottom: 384px;
+          position: fixed;
+          display: block;
+          width: 100%;
+          margin: 0 auto;
+      }
+            
+      .container2 {
+          bottom: 40px;
+          position: fixed;
+          display: block;
+          width: 100%;
+          margin: 0 auto;
+      }
+      .container3 {
+          bottom: 290px;
+          position: fixed;
+          display: block;
+          width: 100%;
+          margin: 0 auto;
+      }
+      .versions {
+          margin: 0 auto;
+          display: table;
+      }
+
+            .time {
+          color: #fff;
+          text-align: right;
+          font-family: fantasy;
+          text-shadow: 1px 0px 5px rgba(0, 0, 0, 0.47);
+      }
+      .time_box {
+          position: fixed;
+          font-family: fantasy;
+          top: 3px;
+          list-style: none;
+          right: 16px;
+      }
+
+
+
+
+    </style>
+  </head>
+  <body id="body"><video autoplay="" muted="" loop="" id="myVideo" class="video_box">
+        <source src="videoplayback.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video><div class="container"> 
+          <div class="versions">
+            <a  style="background: rgba(12, 77, 167, 0.30);" href="http://192.168.1.250/dbms/stable">
+              <img src="head12.png" style="width: 151px;">
+              STABLE</a>  
+            <ul class="time_box">
+              <li class="time" id="shanghai_time"></li>  
+              <li class="time" id="paris_time"></li>  
+              <li class="time" id="morroco_time"></li>  
+            </div>
+         </div>
+      </div>
+
+
+      <div class="container3"> 
+        <div class="versions">
+          <a  style="background: rgba(153, 208, 80, 0.48);" href="http://192.168.1.250/dbms/test">
+           
+            TEST</a>  
+       
+       </div>
+    </div>
+
+
+      <div class="container2"> 
+        <div class="versions"> 
+         
+          <a  style="background: rgba(255, 174, 33, 0.30);" href="http://192.168.1.250/dbms/dev/cedric">
+            <img style=" width: 150px; "src="cedric.jpg">
+            Cedric Dev</a>  
+
+            <a  style="background: rgba(255, 174, 33, 0.30);" href="http://192.168.1.250/dbms/dev/akshay">
+              <img style=" width: 150px; "src="akshay.jpg">
+              Akshay Dev</a> 
+              
+          <a style="background: rgba(255, 174, 33, 0.30);"  href="http://192.168.1.250/dbms/dev/elwynn">
+            <img style=" width: 150px; "src="elwynn.jpg">
+            Elwynn Dev</a>
+
+        
+
+           
+
+       </div>
+    </div>
+
+
+      <script src="moments.js"></script>
+      <script src="moment-timezone-with-data.min.js"></script>
+
+      <script>
+
+        function realtime() { 
+           
+            let shanghai_time = moment().tz('Asia/Shanghai').format('h:mm:ss a');
+            let paris_time = moment().tz('Europe/Paris').format('h:mm:ss a');
+            let morroco_time = moment().tz('Africa/Casablanca').format('h:mm:ss a');
+
+          
+            document.getElementById('shanghai_time').innerHTML = "SHANGHAI  &nbsp;&nbsp;&nbsp;"+shanghai_time; 
+            document.getElementById('paris_time').innerHTML = "MOROCCO  &nbsp;&nbsp;&nbsp;"+morroco_time; 
+            document.getElementById('morroco_time').innerHTML = "PARIS  &nbsp;&nbsp;&nbsp;"+paris_time; 
+
+            setInterval(() => {
+              let shanghai_time = moment().tz('Asia/Shanghai').format('h:mm:ss a');
+              let paris_time = moment().tz('Europe/Paris').format('h:mm:ss a');
+              let morroco_time = moment().tz('Africa/Casablanca').format('h:mm:ss a');
+
+              document.getElementById('shanghai_time').innerHTML = "SHANGHAI: &nbsp;&nbsp;&nbsp;"+shanghai_time; 
+            document.getElementById('paris_time').innerHTML = "MOROCCO: &nbsp;&nbsp;&nbsp;"+morroco_time; 
+            document.getElementById('morroco_time').innerHTML = "PARIS: &nbsp;&nbsp;&nbsp;"+paris_time; 
+            }, 1000)
+          }
+
+          function changeVideoWidth(){
+            var body_Width = parseInt(document.getElementById('body').offsetWidth)+parseInt(50);           
+            document.getElementById('myVideo').setAttribute("style","width:"+body_Width+"px");             
+          }
+          
+            window.onkeydown = function(){
+              changeVideoWidth();
+            }
+
+          realtime(); 
+          changeVideoWidth();
+      </script>
+     
+  </body>
+</html>
